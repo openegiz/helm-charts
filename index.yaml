@@ -1,0 +1,297 @@
+apiVersion: v1
+entries:
+  ditto:
+  - apiVersion: v2
+    appVersion: 3.3.7
+    created: "2026-05-04T16:02:19.018591+05:00"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: file://charts/mongodb
+      version: ^12.x
+    description: 'Eclipse Ditto™ is a technology in the IoT implementing a software
+      pattern called “digital twins”. A digital twin is a virtual, cloud based, representation
+      of his real world counterpart (real world “Things”, e.g. devices like sensors,
+      smart heating, connected cars, smart grids, EV charging stations etc). '
+    digest: 2e1b23c9c3fecd840f828045d8e1c88811509b643381f570aa81787bd56fe37f
+    home: https://www.eclipse.dev/ditto
+    icon: https://www.eclipse.dev/ditto/images/ditto.svg
+    keywords:
+    - iot-chart
+    - digital-twin
+    - IoT
+    maintainers:
+    - email: thomas.jaeckle@beyonnex.io
+      name: thjaeckle
+    name: ditto
+    sources:
+    - https://github.com/eclipse-ditto/ditto
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/ditto-3.3.7.tgz
+    version: 3.3.7
+  grafana:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/grafana/helm-charts
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana
+    apiVersion: v2
+    appVersion: 12.3.0
+    created: "2026-05-04T16:02:19.020259+05:00"
+    description: The leading tool for querying and visualizing time series and metrics.
+    digest: 5ebe0df12f1803d1b4ff32b70c0f9104b64fcf05dcb2e267af862f2d6e896f4f
+    home: https://grafana.com
+    icon: https://artifacthub.io/image/b4fed1a7-6c8f-4945-b99d-096efa3e4116
+    keywords:
+    - monitoring
+    - metric
+    kubeVersion: ^1.8.0-0
+    maintainers:
+    - email: zanhsieh@gmail.com
+      name: zanhsieh
+    - email: rluckie@cisco.com
+      name: rtluckie
+    - email: maor.friedman@redhat.com
+      name: maorfr
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: mail@torstenwalter.de
+      name: torstenwalter
+    - email: github@jkroepke.de
+      name: jkroepke
+    - email: quentin.bisson@gmail.com
+      name: QuentinBisson
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://github.com/grafana/helm-charts
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/grafana-10.1.5.tgz
+    version: 10.1.5
+  hono:
+  - apiVersion: v2
+    appVersion: 2.6.0
+    created: "2026-05-04T16:02:19.032836+05:00"
+    dependencies:
+    - condition: prometheus.createInstance
+      name: prometheus
+      repository: file://charts/prometheus
+      version: ^14.x
+    - condition: grafana.enabled
+      name: grafana
+      repository: file://charts/grafana
+      version: ^6.x
+    - condition: mongodb.createInstance
+      name: mongodb
+      repository: file://charts/mongodb
+      version: ~13.x
+    - condition: kafkaMessagingClusterExample.enabled
+      name: kafka
+      repository: file://charts/kafka
+      version: ^26.8
+    description: 'Eclipse Hono™ provides remote service interfaces for connecting
+      large numbers of IoT devices to a back end and interacting with them in a uniform
+      way regardless of the device communication protocol. '
+    digest: c543d4f4c7939d5dcddaf0d17b6f6d56c76d69f0868b7aca26ac120f0b6f45ea
+    home: https://www.eclipse.org/hono/
+    icon: https://eclipse.dev/hono/img/hono-logo_image.svg
+    keywords:
+    - iot-chart
+    - IoT
+    - connectivity
+    - messaging
+    - Kafka
+    maintainers:
+    - email: dbosanac@redhat.com
+      name: dejanb
+    - email: kai.hudalla@bosch.io
+      name: sophokles73
+    name: hono
+    sources:
+    - https://github.com/eclipse-hono/hono
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/hono-2.6.6.tgz
+    version: 2.6.6
+  influxdb2:
+  - apiVersion: v2
+    appVersion: 2.7.4
+    created: "2026-05-04T16:02:19.033133+05:00"
+    description: A Helm chart for InfluxDB v2
+    digest: e02dfb8c0e36a139f6f6af0099c4300bd6077b43f84aabbe8f3bcb9f175f19d5
+    home: https://www.influxdata.com/products/influxdb/
+    icon: https://avatars0.githubusercontent.com/u/5713248?s=200&v=4
+    maintainers:
+    - email: rawkode@influxdata.com
+      name: rawkode
+    - email: giacomo@influxdata.com
+      name: gitirabassi
+    name: influxdb2
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/influxdb2-2.1.2.tgz
+    version: 2.1.2
+  mongodb:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.25.14-debian-11-r5
+        - name: mongodb-exporter
+          image: docker.io/bitnami/mongodb-exporter:0.39.0-debian-11-r106
+        - name: mongodb
+          image: docker.io/bitnami/mongodb:6.0.10-debian-11-r8
+        - name: nginx
+          image: docker.io/bitnami/nginx:1.25.2-debian-11-r32
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:11-debian-11-r72
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 6.0.10
+    created: "2026-05-04T16:02:19.035436+05:00"
+    dependencies:
+    - name: common
+      repository: file://charts/common
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: MongoDB(R) is a relational open source NoSQL database. Easy to use,
+      it stores data in JSON-like documents. Automated scalability and high-performance.
+      Ideal for developing cloud native applications.
+    digest: 482edd1ef6c1fea67553f3b88680eb62079d29bfcc3ab9a6c4d02033113c1515
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/mongodb/img/mongodb-stack-220x234.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    - cluster
+    - replicaset
+    - replication
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: mongodb
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/mongodb
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/mongodb-13.18.5.tgz
+    version: 13.18.5
+  mosquitto:
+  - apiVersion: v1
+    appVersion: 1.6.10
+    created: "2026-05-04T16:02:19.035619+05:00"
+    description: Eclipse Mosquitto - An open source MQTT broker
+    digest: 2445a55186071a58311bca3157e990d4a588ba7e6adcc1511c2d3275b5128096
+    home: https://mosquitto.org/
+    icon: https://mosquitto.org/images/mosquitto-text-side-28.png
+    keywords:
+    - message queue
+    - MQTT
+    - mosquitto
+    - eclipse-iot
+    name: mosquitto
+    sources:
+    - https://github.com/eclipse/mosquitto
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/mosquitto-0.3.1.tgz
+    version: 0.3.1
+  openegiz:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2026-05-04T16:02:19.056801+05:00"
+    dependencies:
+    - condition: ditto.enabled
+      name: ditto
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - ditto
+      - essencial
+      version: 3.3.7
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - mongodb
+      - essencial
+      version: ~13.18.5
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - grafana
+      - essencial
+      version: ~10.1.2
+    - condition: influxdb2.enabled
+      name: influxdb2
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - influxdb2
+      - essencial
+      version: ~2.1.1
+    - condition: telegraf.enabled
+      name: telegraf
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - telegraf
+      - essencial
+      version: ^1.8.27
+    - condition: mosquitto.enabled
+      name: mosquitto
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - mosquitto
+      - essencial
+      version: ~0.3.1
+    - condition: hono.enabled
+      name: hono
+      repository: https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts
+      tags:
+      - hono
+      - essencial
+      version: ^2.5.5
+    description: OpenEgiz — an open-source digital twin platform for EGIZ solutions.
+    digest: 21317a86742d66ad31aa9a0ed0b40da307a064903b5ca9cff0249ce8ef887d62
+    keywords:
+    - openegiz
+    - digital-twin
+    - IoT
+    - iot-platform
+    name: openegiz
+    sources:
+    - https://github.com/openegiz/openegiz
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/openegiz-1.0.0.tgz
+    version: 1.0.0
+  telegraf:
+  - apiVersion: v2
+    appVersion: 1.37.0
+    created: "2026-05-04T16:02:19.057217+05:00"
+    description: Telegraf is an agent written in Go for collecting, processing, aggregating,
+      and writing metrics.
+    digest: 6c1ff6810b778fea584531477e9686cbc540d05f029b050548914d84d00237bd
+    home: https://www.influxdata.com/time-series-platform/telegraf/
+    icon: https://avatars0.githubusercontent.com/u/5713248?s=200&v=4
+    keywords:
+    - telegraf
+    - collector
+    - timeseries
+    - influxdata
+    - influxdb
+    - agent
+    maintainers:
+    - email: rawkode@influxdata.com
+      name: rawkode
+    - email: giacomo@influxdata.com
+      name: gitirabassi
+    name: telegraf
+    sources:
+    - https://github.com/influxdata/helm-charts/tree/master/charts/telegraf
+    - https://github.com/influxdata/helm-charts/
+    urls:
+    - https://raw.githubusercontent.com/openegiz/helm-charts/codex/bootstrap-openegiz-helm-charts/charts/telegraf-1.8.66.tgz
+    version: 1.8.66
+generated: "2026-05-04T16:02:19.013873+05:00"
